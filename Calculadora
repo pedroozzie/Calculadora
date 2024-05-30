@@ -1,0 +1,274 @@
+package View;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+
+public class Calculator extends JFrame implements ActionListener{
+
+    double n1;
+    double n2;
+    double result;
+    String oper;
+
+    JButton btn7 = new JButton("7");
+    JButton btn8 = new JButton("8");
+    JButton btn9 = new JButton("9");
+    JButton sumBtn = new JButton("+");
+    JButton btn4 = new JButton("4");
+    JButton btn5 = new JButton("5");
+    JButton btn6= new JButton("6");
+    JButton restBtn = new JButton("-");
+    JButton btn1 = new JButton("1");
+    JButton btn2 = new JButton("2");
+    JButton btn3 = new JButton("3");
+    JButton multBtn = new JButton("*");
+    JButton cleanBtn = new JButton("CA");
+    JButton btn0 = new JButton("0");
+    JButton igBtn = new JButton("=");
+    JButton divBtn = new JButton("/");
+    JTextField tf = new JTextField("0");
+
+    public Calculator() {
+        Ventana();
+    }
+    void Ventana () {
+
+        setLayout(new GridBagLayout());
+        setTitle("Calculadora");
+        setSize(320,400);
+
+
+        setLayout(new BorderLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4,3));
+
+        tf = new JTextField();
+        tf.setHorizontalAlignment(SwingConstants.RIGHT);
+        tf.setFont(new Font("Impact", Font.PLAIN, 26));
+
+
+        //Boton 7
+        btn7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn7.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn7);
+
+        //Boton 8
+        btn8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn8.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn8);
+
+        //Boton 9
+        btn9.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn9.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn9);
+
+        //Boton suma
+        sumBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                n1 = Double.parseDouble(tf.getText());
+                tf.setText("");;
+                oper ="+";
+            }
+        });
+        panel.add(sumBtn);
+
+        //Boton 4
+        btn4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn4.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn4);
+
+        //Boton 5
+        btn5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn5.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn5);
+
+        //Boton 6
+        btn6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn6.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn6);
+
+        //Boton resta
+        restBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                n1 = Double.parseDouble(tf.getText());
+                tf.setText("");;
+                oper ="-";
+            }
+        });
+        panel.add(restBtn);
+
+        //Boton 1
+        btn1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn1.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn1);
+
+        //Boton 2
+        btn2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn2.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn2);
+
+        //Boton 3
+        btn3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn3.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn3);
+
+        //Boton multiplicacion
+        multBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                n1 = Double.parseDouble(tf.getText());
+                tf.setText("");;
+                oper ="*";
+            }
+        });
+        panel.add(multBtn);
+
+        //Boton clean all
+        cleanBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tf.setText("");
+            }
+        });
+        panel.add(cleanBtn);
+
+        //Boton 0
+        btn0.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String IngreseNumero = tf.getText() + btn0.getText();
+                tf.setText(IngreseNumero);
+            }
+        });
+        panel.add(btn0);
+
+        //Boton igual
+        igBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String seleccionar;
+                n2 = Double.parseDouble(tf.getText());
+
+                if(oper == "+") {
+                    result = n1+n2;
+                    seleccionar = String.format("%.0f",result);
+                    tf.setText(seleccionar);
+                }
+
+                else if(oper == "-") {
+                    result = n1-n2;
+                    seleccionar = String.format("%.0f",result);
+                    tf.setText(seleccionar);
+                }
+
+                else if(oper == "*") {
+                    result = n1*n2;
+                    seleccionar = String.format("%.0f",result);
+                    tf.setText(seleccionar);
+                }
+
+                else if(oper == "/") {
+                    result = n1/n2;
+                    seleccionar = String.format("%.2f",result);
+                    tf.setText(seleccionar);
+
+                }
+            }
+        });
+        panel.add(igBtn);
+
+        //Boton division
+        divBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                n1 = Double.parseDouble(tf.getText());
+                tf.setText("");;
+                oper ="/";
+            }
+        });
+        panel.add(divBtn);
+
+
+
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new GridLayout(0,1));
+        panel2.add(tf, BorderLayout.NORTH);
+        panel2.add(panel,BorderLayout.CENTER);
+
+        add(panel2,BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
+
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == btn7) {
+
+        } else if (e.getSource() == btn2) {
+
+            tf.setText(btn2.getText());
+
+        } else if (e.getSource() == btn3) {
+            tf.setText(btn3.getText());
+
+        }
+    }
+
+    public void keyPressed (KeyEvent e) {
+        switch (e.getKeyCode()) {
+        case KeyEvent.VK_ENTER:
+
+            break;
+
+
+        }
+    }
+
+    void renombrarLabel () {
+
+
+
+    }
+
+    public static void main(String[] args) {
+        Calculator panel = new Calculator();
+    }
+
+}
